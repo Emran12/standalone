@@ -71,22 +71,3 @@ class SpeakerScraper:
 scraper = SpeakerScraper()
 scraper.scrape_speakers()
 
-#
-# while True:
-#     # Get the current page height
-#     current_height = self.driver.execute_script("return document.body.scrollHeight")
-#
-#     # Scroll to the bottom of the page
-#     self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-#
-#     # Wait until the page height changes or reaches a maximum
-#     WebDriverWait(self.driver, 10).until(
-#         EC.not_equal_to(current_height, self.driver.execute_script("return document.body.scrollHeight"))
-#     )
-#
-#     # Get the new page height
-#     new_height = self.driver.execute_script("return document.body.scrollHeight")
-#
-#     # Check if the page height remains the same, indicating that all content has been loaded
-#     if new_height == current_height:
-#         break
