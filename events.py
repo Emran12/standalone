@@ -7,20 +7,18 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from scroll_page import ScrollPage
 
 
-class SpeakerScraper:
+class SpeakerScraper(ScrollPage):
     def __init__(self):
         self.driver = webdriver.Firefox()
+        super().__init__(self.driver)
 
     def scrape_speakers(self):
         url = 'https://www.synbiobeta.com/attend/synbiobeta-2023/speakers'
         self.driver.get(url)
-        i = 1
-        while i < 15:
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(10)
-            i += 1
+        self.scroll_to_bottom()
         speakers_xpath = "//div[@class='speakers-collection w-dyn-list']" \
                          "//div[@class='collection-list-13 w-dyn-items w-row']" \
                          "//div[@class='collection-item-16 w-dyn-item w-col w-col-3']//a"
